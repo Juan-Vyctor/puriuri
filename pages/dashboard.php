@@ -190,11 +190,8 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
       <div class="col-5">
         <main class="p-3 bg-dark bg-opacity-75 rounded-5">
             <?php
-              include('database.php');
-              $sql = sprintf("SELECT usu_nome FROM tb_usuarios WHERE usu_email ='%s'", $conn->real_escape_string($email));
-              $result = $conn->query($sql);
-
-              echo"<h1>Bem vindo, $result</h1>";
+              $nome = $_GET['nome'];
+              echo"<h1>Bem vindo, $nome</h1>";
             ?>
             <p class="lead">O que você deseja fazer?</p>
             <p class="lead">
