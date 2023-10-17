@@ -6,7 +6,14 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
         
-        header("Location: /dashboard?nome=$nome");
+        $data = (new Usuario())->login($email);
+
+        if (password_verify($senha, $data['usu_senha'])) {
+            $nome = $_SESSION['nome'];
+            header("Location: /dashboard?nome=$nome");
+        } else {
+            header("Location: /login");
+        }
     } else {
         header("Location: /");
     }
