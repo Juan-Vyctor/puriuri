@@ -1,11 +1,15 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'root', '', 'db_iuri');
-// nesse terceiro espaço, coloquem a senha do MySQL de vocês
-// no quarto espaço, coloquem o nome da database
-
-if ($mysqli->connect_error) {
-    die("Connection failed: ". $myqsli->connect_error);
+define('HOST', 'localhost');
+define('USER', 'root');
+define('PASS', '');
+define('DBNAME', 'db_iuri');
+//configurem isso aqui certinho baseado em como o banco de vocês tiver
+try {
+    $pdo = new pdo('mysql:host=' . HOST . ';dbname=' . DBNAME, USER, PASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Erro no PDO: '. $e->getMessage());
 }
 
 ?>
